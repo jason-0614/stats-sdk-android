@@ -1,0 +1,9 @@
+include ':apidemo', ':base'
+def demoRootDir = new File(settingsDir, './demo')
+project(':apidemo').projectDir = new File(demoRootDir, 'apidemo')
+project(':base').projectDir = new File(demoRootDir, 'base')
+
+include ':StatsSdk', ':stats-sdk-core'
+def sdkRootDir = new File(settingsDir, './stats-sdk')
+project(':StatsSdk').projectDir = new File(sdkRootDir, 'StatsSdk')
+project(':stats-sdk-core').projectDir = new File(sdkRootDir, 'stats-sdk-core')

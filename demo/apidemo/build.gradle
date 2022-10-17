@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    compileSdk androidConfig.compileSdkVersion
+
+    defaultConfig {
+        applicationId 'com.stats.android.demo'
+        minSdk androidConfig.minSdkVersion
+        targetSdk androidConfig.targetSdkVersion
+        versionCode 1
+        versionName '1.0.0'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility javaConfig.jdkVersion
+        targetCompatibility javaConfig.jdkVersion
+    }
+
+    kotlinOptions {
+        jvmTarget = javaConfig.jvmTargetVersion
+    }
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar', '*.aar'], dir: 'libs')
+    implementation project(':base')
+    implementation project(':StatsSdk')
+
+    implementation deps.appCompat
+    implementation deps.constraintLayout
+}
